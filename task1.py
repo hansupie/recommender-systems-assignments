@@ -1,15 +1,13 @@
-from csv import DictReader
+import pandas
+from pandas.core.frame import DataFrame
+import pandas as pd
 
 # open ratings.csv file and read all the lines to data list
+data=pandas.read_csv('ratings.csv',sep=',',header='infer',quotechar='\"')
 
-with open("ratings.csv", 'r') as f:
-    dict_reader = DictReader(f)
-    list_of_dict = list(dict_reader)
+# print first  rows
+get_rows = data.head(3)
+print(get_rows)
 
-# print first 4 rows (column names + 3 first value rows)
 # print list length
-
-for x in range(4):
-    print(list_of_dict[x])
-print(len(list_of_dict))
-
+print(data.count())
