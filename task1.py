@@ -1,4 +1,3 @@
-import pandas
 from pandas.core.frame import DataFrame
 import pandas as pd
 
