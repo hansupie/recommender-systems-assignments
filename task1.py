@@ -3,6 +3,9 @@ from itertools import groupby
 import pandas as pd
 import numpy as np
 
+'''   This part was used to calculate corrcoef, but since it took so long, we wrote it to
+      to calculated_corr.csv and now just load the csv :D
+      
 # open ratings.csv file and read all the lines to data list
 r_data=pd.read_csv('ratings.csv',sep=',',header='infer',quotechar='\"')
 
@@ -23,12 +26,12 @@ data = r_data.merge(m_data,on="movieId")
 data.drop(['timestamp'],inplace=True,axis=1)
 
 data_table = pd.pivot_table(data,values='rating',columns='userId',index='title')
-print('MOVIELENS')
-print(data_table.head(10))
+#print('MOVIELENS')
+# print(data_table.head(10))
 
 # just testing with smaller data
-# data_table = pd.read_csv('small_movie_ratings.csv', index_col=0)
-# print(data_table)
+#data_table = pd.read_csv('small_movie_ratings.csv', index_col=0)
+#print(data_table)
 
 # function to check if all values are equal
 def all_equal(iterable):
@@ -58,3 +61,24 @@ movies = list(data_table.index)
 similarity_matrix = np.array([[find_corr(data_table, user1, user2) for user1 in users] for user2 in users])
 similarity_data = pd.DataFrame(similarity_matrix, columns=users, index=users)
 print(similarity_data)
+
+similarity_data.to_csv('calculated_corr.csv', index=False)
+'''
+
+
+
+
+
+calc_data=pd.read_csv('calculated_corr.csv',sep=',',header='infer',quotechar='\"')
+calc_data.index = np.arange(1, len(calc_data) + 1)
+print(calc_data)
+
+
+# nearest 10 correlations for user '15'
+
+# sorts list to nearest ones to user '15'
+##nearest = similarity_data.sort_values(axis = 'columns', by='15', ascending=False)
+#print(nearest.head(11))
+# removes all other colums except '1'
+#nearest = nearest[['15']]
+#print(nearest.head(11))
