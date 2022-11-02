@@ -65,18 +65,15 @@ print(similarity_data)
 similarity_data.to_csv('calculated_corr.csv', index=False)
 '''
 
-
-
-
-
+# reading calculated data to dataframe
 calc_data=pd.read_csv('calculated_corr.csv',sep=',',header='infer',quotechar='\"')
 calc_data.index = np.arange(1, len(calc_data) + 1)
 print(calc_data)
 
 
-# nearest 10 correlations for user '15'
+# nearest 10 correlations for user '1'
 
-# sorts list to nearest ones to user '15'
+# sorts list to nearest ones to user '1'
 nearest = calc_data.sort_values(axis = 'index', by='1', ascending=False)
 
 # removes all other colums except '1'
