@@ -77,8 +77,8 @@ print(calc_data)
 # nearest 10 correlations for user '15'
 
 # sorts list to nearest ones to user '15'
-##nearest = similarity_data.sort_values(axis = 'columns', by='15', ascending=False)
-#print(nearest.head(11))
+nearest = calc_data.sort_values(axis = 'index', by='1', ascending=False)
+
 # removes all other colums except '1'
-#nearest = nearest[['15']]
-#print(nearest.head(11))
+nearest = nearest[['1']]
+print(nearest.head(11))
