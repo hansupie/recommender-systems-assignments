@@ -24,8 +24,8 @@ data.drop(['timestamp'],inplace=True,axis=1)
 
 data_table = pd.pivot_table(data,values='rating',columns='userId',index='title')
 
-print('MOVIELENS')
-print(data_table.head(10))
+#print('MOVIELENS')
+#print(data_table.head(10))
 
 # just testing with smaller data
 # data_table = pd.read_csv('small_movie_ratings.csv', index_col=0)
@@ -69,7 +69,7 @@ similarity_data.to_csv('calculated_corr.csv', index=False)
 # reading calculated data to dataframe
 calc_data=pd.read_csv('calculated_corr.csv',sep=',',header='infer',quotechar='\"')
 calc_data.index = np.arange(1, len(calc_data) + 1)
-print(calc_data)
+#print(calc_data)
 
 
 #nearest 10 correlations for user '1'
@@ -79,6 +79,7 @@ nearest = calc_data.sort_values(axis = 'index', by='1', ascending=False)
 
 # removes all other colums except '1'
 nearest = nearest[['1']]
+print("Nearest neighbours and their correlation:")
 print(nearest.head(11))
 
 
