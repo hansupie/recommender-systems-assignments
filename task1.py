@@ -126,7 +126,11 @@ def get_weighted_average_rating_of_neighbours(ratings: list, neighbour_dist: lis
 
 def get_user_rating(data_table: pd.DataFrame, user: str, avg_neighbour_rating: float):
   user_avg_rating = data_table[int(user)].mean()
-  return round(user_avg_rating + avg_neighbour_rating, 2)
+  if(avg_neighbour_rating < 0):
+    return round(user_avg_rating + avg_neighbour_rating, 2)
+  else:
+    return round(user_avg_rating - avg_neighbour_rating, 2)
+  
 
 def predict_rating(data: pd.DataFrame, similarity_data: pd.DataFrame, user: int, movie: str, neighbours: int = 30):
   data_table = data.copy()
