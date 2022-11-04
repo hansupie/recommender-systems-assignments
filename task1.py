@@ -153,7 +153,6 @@ for movie in data_table.index:
 rating_list = list(zip(data_table.index, user_ratings))
 
 rating_df = pd.DataFrame(rating_list, columns=['Movie', 'Rating'])
-print(rating_df)
 
 movie_recs = rating_df.sort_values('Rating', ascending=False)
 print(movie_recs.head(20))
