@@ -2,6 +2,8 @@ from pandas.core.frame import DataFrame
 from itertools import groupby
 import pandas as pd
 import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+from scipy import sparse
       
 # open ratings.csv file and read all the lines to data list
 r_data=pd.read_csv('ratings.csv',sep=',',header='infer',quotechar='\"')
@@ -157,3 +159,14 @@ rating_df = pd.DataFrame(rating_list, columns=['Movie', 'Rating'])
 
 movie_recs = rating_df.sort_values('Rating', ascending=False)
 print(movie_recs.head(20))
+
+
+# item-based collaborative filtering using cosine similarity
+
+nonan_sparse = sparse.csr_matrix(data_table.fillna(0))
+similarity_matrix = cosine_similarity(data_table.fillna(0))
+print("similary matrix")
+print(similarity_matrix)
+
+similarity_sparse = cosine_similarity(nonan_sparse,dense_output=False)
+print('pairwise sparse output:\n {}\n'.format(similarity_sparse))
