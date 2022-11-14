@@ -96,6 +96,7 @@ all_ratings = data_table.copy()
 
 users = [1, 2, 3]
 group_user_ratings = []
+group_least_ratings = []
 
 for movie in data_table.index:
   movie_ratings = []
@@ -108,14 +109,20 @@ for movie in data_table.index:
     # get average of movie_ratings
     avg = mean(movie_ratings)
     group_user_ratings.append((movie, avg))
+    # get minumum of movie_ratings
+    mini = min(movie_ratings)
+    group_least_ratings.append((movie, mini))
 
 group_user_ratings.sort(key=lambda a: a[1], reverse=True)
+group_least_ratings.sort(key=lambda a: a[1], reverse=True)
 
 print("Part A: Average aggregation method")
 print(*group_user_ratings[:20], sep="\n")
 
 #
 # A. Least misery method
+print("Least misery ratings:")
+print(*group_least_ratings[:20], sep="\n")
 #
 
 
